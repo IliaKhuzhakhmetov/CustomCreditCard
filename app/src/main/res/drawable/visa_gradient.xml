@@ -37,12 +37,12 @@
                             >
 
                         <item
-                                android:color="#5621C4"
+                                android:color="#03B3E9"
                                 android:offset="0"
                                 />
 
                         <item
-                                android:color="#BA2073"
+                                android:color="#2E7D32"
                                 android:offset="1"
                                 />
 

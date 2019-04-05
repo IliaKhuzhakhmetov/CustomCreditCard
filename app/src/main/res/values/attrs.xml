@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomCreditCard">
+        <attr name="cardType">
+            <enum name="VISA" value="0" />
+            <enum name="MASTER_CARD" value="1" />
+        </attr>
+    </declare-styleable>
+
+</resources>
