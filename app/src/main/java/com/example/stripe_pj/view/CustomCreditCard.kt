@@ -13,8 +13,8 @@ class CustomCreditCard : LinearLayout {
     internal lateinit var rootView: View
 
     var mTYPE = TYPE.VISA
-    internal lateinit var logo: AppCompatImageView
-    internal lateinit var gradient: AppCompatImageView
+    private lateinit var logo: AppCompatImageView
+    private lateinit var gradient: AppCompatImageView
 
     constructor(context: Context) : super(context) {
         init(context)
@@ -62,7 +62,12 @@ class CustomCreditCard : LinearLayout {
 
         Log.d("Test", "${mTYPE.type}")
 
-        when (mTYPE) {
+        setType(mTYPE)
+
+    }
+
+    fun setType(type: TYPE){
+        when (type) {
             TYPE.VISA -> {
                 logo.setImageDrawable(context.resources.getDrawable(R.drawable.visa_logo))
                 gradient.setImageDrawable(context.resources.getDrawable(R.drawable.visa_gradient))
@@ -71,9 +76,32 @@ class CustomCreditCard : LinearLayout {
                 logo.setImageDrawable(context.resources.getDrawable(R.drawable.mastercard_logo))
                 gradient.setImageDrawable(context.resources.getDrawable(R.drawable.mastercard_gradient))
             }
+            TYPE.UNIONPAY -> {
+                logo.setImageDrawable(context.resources.getDrawable(R.drawable.unionpay_logo))
+                gradient.setImageDrawable(context.resources.getDrawable(R.drawable.unionpay_gradient))
+            }
+            TYPE.DINERS_CLUB -> {
+                logo.setImageDrawable(context.resources.getDrawable(R.drawable.diners_club_logo))
+                gradient.setImageDrawable(context.resources.getDrawable(R.drawable.diner_club_gradient))
+            }
+            TYPE.AMERICAN_EXPRESS -> {
+                logo.setImageDrawable(context.resources.getDrawable(R.drawable.amex_logo))
+                gradient.setImageDrawable(context.resources.getDrawable(R.drawable.amex_gradient))
+            }
+            TYPE.DISCOVER -> {
+                logo.setImageDrawable(context.resources.getDrawable(R.drawable.discover_logo))
+                gradient.setImageDrawable(context.resources.getDrawable(R.drawable.discover_gradient))
+            }
+            TYPE.JCB -> {
+                logo.setImageDrawable(context.resources.getDrawable(R.drawable.jcb_logo))
+                gradient.setImageDrawable(context.resources.getDrawable(R.drawable.jcb_gradient))
+            }
+            else -> {
+                logo.setImageDrawable(null)
+                gradient.setImageDrawable(context.resources.getDrawable(R.drawable.diner_club_gradient))
+            }
         }
     }
-
 }
 
 enum class TYPE(var type: Int) {

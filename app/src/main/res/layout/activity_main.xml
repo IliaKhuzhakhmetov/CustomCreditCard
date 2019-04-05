@@ -8,11 +8,12 @@
         tools:context=".MainActivity">
 
     <com.example.stripe_pj.view.CustomCreditCard
+            android:id="@+id/card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:cardType="MASTER_CARD"
+            app:cardType="JCB"
             app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

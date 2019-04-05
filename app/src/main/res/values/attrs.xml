@@ -4,6 +4,11 @@
         <attr name="cardType">
             <enum name="VISA" value="0" />
             <enum name="MASTER_CARD" value="1" />
+            <enum name="UNIONPAY" value="2" />
+            <enum name="DINERS_CLUB" value="3" />
+            <enum name="AMEX" value="4" />
+            <enum name="DISCOVER" value="5" />
+            <enum name="JCB" value="6" />
         </attr>
     </declare-styleable>
 
