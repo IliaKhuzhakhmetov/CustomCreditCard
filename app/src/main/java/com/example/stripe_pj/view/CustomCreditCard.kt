@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.content.ContextCompat
 import com.example.stripe_pj.R
 
 class CustomCreditCard : LinearLayout {
@@ -94,36 +95,36 @@ class CustomCreditCard : LinearLayout {
     fun setType(type: TYPE) {
         when (type) {
             TYPE.VISA -> {
-                logo.setImageDrawable(context.resources.getDrawable(R.drawable.visa_logo))
-                gradient.setImageDrawable(context.resources.getDrawable(R.drawable.visa_gradient))
+                logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.visa_logo))
+                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.visa_gradient))
             }
             TYPE.MASTERCARD -> {
-                logo.setImageDrawable(context.resources.getDrawable(R.drawable.mastercard_logo))
-                gradient.setImageDrawable(context.resources.getDrawable(R.drawable.mastercard_gradient))
+                logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.mastercard_logo))
+                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.mastercard_gradient))
             }
             TYPE.UNIONPAY -> {
-                logo.setImageDrawable(context.resources.getDrawable(R.drawable.unionpay_logo))
-                gradient.setImageDrawable(context.resources.getDrawable(R.drawable.unionpay_gradient))
+                logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.unionpay_logo))
+                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.unionpay_gradient))
             }
             TYPE.DINERS_CLUB -> {
-                logo.setImageDrawable(context.resources.getDrawable(R.drawable.diners_club_logo))
-                gradient.setImageDrawable(context.resources.getDrawable(R.drawable.diner_club_gradient))
+                logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.diners_club_logo))
+                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.diner_club_gradient))
             }
             TYPE.AMERICAN_EXPRESS -> {
-                logo.setImageDrawable(context.resources.getDrawable(R.drawable.amex_logo))
-                gradient.setImageDrawable(context.resources.getDrawable(R.drawable.amex_gradient))
+                logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.amex_logo))
+                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.amex_gradient))
             }
             TYPE.DISCOVER -> {
-                logo.setImageDrawable(context.resources.getDrawable(R.drawable.discover_logo))
-                gradient.setImageDrawable(context.resources.getDrawable(R.drawable.discover_gradient))
+                logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.discover_logo))
+                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.discover_gradient))
             }
             TYPE.JCB -> {
-                logo.setImageDrawable(context.resources.getDrawable(R.drawable.jcb_logo))
-                gradient.setImageDrawable(context.resources.getDrawable(R.drawable.jcb_gradient))
+                logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.jcb_logo))
+                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.jcb_gradient))
             }
             else -> {
                 logo.setImageDrawable(null)
-                gradient.setImageDrawable(context.resources.getDrawable(R.drawable.diner_club_gradient))
+                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.diner_club_gradient))
             }
         }
     }
