@@ -86,8 +86,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/saira_medium"
                     android:text="@string/card_number_def"
+                    android:maxLines="1"
                     android:textColor="@color/white"
                     android:textSize="@dimen/number_card_t_size"
+                    android:maxLength="19"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/card_number_hint"
                     />
@@ -138,6 +140,7 @@
                     android:text="@string/cvv_hint"
                     android:textColor="@color/white"
                     android:layout_marginTop="@dimen/margin_view"
+                    android:maxLength="4"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/card_number_label"
                     />
@@ -150,6 +153,8 @@
                     android:text="@string/cvv_def"
                     android:textColor="@color/white"
                     android:textSize="@dimen/number_card_t_size"
+                    android:maxLines="1"
+                    android:maxLength="4"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cvv_hint"
                     />

@@ -4,8 +4,10 @@ import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
 import com.example.stripe_pj.R
 
 class CustomCreditCard : LinearLayout {
@@ -15,6 +17,10 @@ class CustomCreditCard : LinearLayout {
     var mTYPE = TYPE.VISA
     private lateinit var logo: AppCompatImageView
     private lateinit var gradient: AppCompatImageView
+    private lateinit var cardNumber: AppCompatTextView
+    private lateinit var cvvNumber: AppCompatTextView
+
+    private val cardMask = "____ ____ ____ ____"
 
     constructor(context: Context) : super(context) {
         init(context)
@@ -59,14 +65,44 @@ class CustomCreditCard : LinearLayout {
 
         logo = findViewById(R.id.logo)
         gradient = findViewById(R.id.gradient)
+        cardNumber = findViewById(R.id.card_number_label)
+        cvvNumber = findViewById(R.id.cvv_label)
 
         Log.d("Test", "${mTYPE.type}")
 
         setType(mTYPE)
-
     }
 
-    fun setType(type: TYPE){
+    fun addWatchers(number: EditText? = null, cvv: EditText? = null) {
+        number?.addTextChangedListener(
+            object : CustomTextWatcher {
+                override fun textChanged(text: String) {
+                    val arr = ArrayList<Char>()
+                    arr.addAll(text.replace(" ", "").toCharArray().toTypedArray())
+                    for (i in 0 until cardMask.length)
+                        if (cardMask[i] == ' ' &&
+                            i < arr.size &&
+                            arr[i] != ' '
+                        ) arr.add(i, ' ')
+
+                    cardNumber.text = arr.toString()
+                        .replace("[", "")
+                        .replace("]", "")
+                        .replace(", ", "")
+                }
+            }
+        )
+
+        cvv?.addTextChangedListener(
+            object : CustomTextWatcher {
+                override fun textChanged(text: String) {
+                    cvvNumber.text = text
+                }
+            }
+        )
+    }
+
+    fun setType(type: TYPE) {
         when (type) {
             TYPE.VISA -> {
                 logo.setImageDrawable(context.resources.getDrawable(R.drawable.visa_logo))

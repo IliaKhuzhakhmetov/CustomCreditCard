@@ -2,6 +2,7 @@ package com.example.stripe_pj
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.stripe_pj.view.CustomTextWatcher
 import com.example.stripe_pj.view.TYPE
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -22,6 +23,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        card.addWatchers(number = cardNumber, cvv = cvv)
 
         card.setOnClickListener {
             if (++cursor < cards.size) card.setType(cards[cursor]) else {
