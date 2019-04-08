@@ -77,18 +77,7 @@ class CustomCreditCard : LinearLayout {
         number?.addTextChangedListener(
             object : CustomTextWatcher {
                 override fun textChanged(text: String) {
-                    val arr = ArrayList<Char>()
-                    arr.addAll(text.replace(" ", "").toCharArray().toTypedArray())
-                    for (i in 0 until cardMask.length)
-                        if (cardMask[i] == ' ' &&
-                            i < arr.size &&
-                            arr[i] != ' '
-                        ) arr.add(i, ' ')
-
-                    cardNumber.text = arr.toString()
-                        .replace("[", "")
-                        .replace("]", "")
-                        .replace(", ", "")
+                    cardNumber.text = text.toMask(cardMask)
                 }
             }
         )

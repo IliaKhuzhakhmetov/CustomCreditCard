@@ -1,8 +1,7 @@
 package com.example.stripe_pj
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.stripe_pj.view.CustomTextWatcher
+import androidx.appcompat.app.AppCompatActivity
 import com.example.stripe_pj.view.TYPE
 import kotlinx.android.synthetic.main.activity_main.*
 
