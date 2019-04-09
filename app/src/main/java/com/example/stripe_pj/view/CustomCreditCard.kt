@@ -99,6 +99,7 @@ class CustomCreditCard : LinearLayout {
 
     fun setSrc(id: Int){
         try {
+            backgroundSrc = ContextCompat.getDrawable(context, id)
             backgroundImage.setImageDrawable(ContextCompat.getDrawable(context, id))
         } catch (e: Exception){
             e.printStackTrace()
@@ -107,6 +108,7 @@ class CustomCreditCard : LinearLayout {
 
     fun setSrc(drawable: Drawable){
         try {
+            backgroundSrc = drawable
             backgroundImage.setImageDrawable(drawable)
         } catch (e: Exception){
             e.printStackTrace()
@@ -115,6 +117,7 @@ class CustomCreditCard : LinearLayout {
 
 
     fun setType(type: TYPE) {
+        mTYPE = type
         when (type) {
             TYPE.VISA -> {
                 logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.visa_logo))
@@ -152,6 +155,7 @@ class CustomCreditCard : LinearLayout {
     }
 
     fun setMonth(m: MONTH){
+        mMONTH = m
         month.text = m.value
     }
 }
