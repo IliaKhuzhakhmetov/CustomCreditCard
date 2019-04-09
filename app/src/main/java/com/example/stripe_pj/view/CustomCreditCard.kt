@@ -1,6 +1,7 @@
 package com.example.stripe_pj.view
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import android.widget.EditText
@@ -16,11 +17,14 @@ class CustomCreditCard : LinearLayout {
 
     var mTYPE = TYPE.VISA
     var mMONTH = MONTH.JANUARY
+    var backgroundSrc = ContextCompat.getDrawable(context, R.drawable.cbimage)
+
     private lateinit var logo: AppCompatImageView
     private lateinit var gradient: AppCompatImageView
     private lateinit var cardNumber: AppCompatTextView
     private lateinit var cvvNumber: AppCompatTextView
     private lateinit var month: AppCompatTextView
+    private lateinit var backgroundImage: AppCompatImageView
 
     private val cardMask = "____ ____ ____ ____"
 
@@ -29,7 +33,7 @@ class CustomCreditCard : LinearLayout {
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        getArrs(attrs)
+        getAttrs(attrs)
 
         init(context)
     }
@@ -39,7 +43,7 @@ class CustomCreditCard : LinearLayout {
         attrs,
         defStyleAttr
     ) {
-        getArrs(attrs)
+        getAttrs(attrs)
 
         init(context)
     }
@@ -52,9 +56,11 @@ class CustomCreditCard : LinearLayout {
         cardNumber = findViewById(R.id.card_number_label)
         cvvNumber = findViewById(R.id.cvv_label)
         month = findViewById(R.id.expirationMLabel)
+        backgroundImage = findViewById(R.id.background)
 
         setType(mTYPE)
         setMonth(mMONTH)
+        setSrc(backgroundSrc!!)
     }
 
     fun addWatchers(number: EditText? = null, cvv: EditText? = null) {
@@ -76,7 +82,7 @@ class CustomCreditCard : LinearLayout {
         )
     }
 
-    private fun getArrs(attrs: AttributeSet?) {
+    private fun getAttrs(attrs: AttributeSet?) {
         val a = context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.CustomCreditCard,
@@ -85,10 +91,28 @@ class CustomCreditCard : LinearLayout {
         try {
             mTYPE = TYPE.fromId(a.getInt(R.styleable.CustomCreditCard_cardType, 0))
             mMONTH = MONTH.fromId(a.getInt(R.styleable.CustomCreditCard_month, 0))
+            backgroundSrc = a.getDrawable(R.styleable.CustomCreditCard_scrBackground)
         } finally {
             a.recycle()
         }
     }
+
+    fun setSrc(id: Int){
+        try {
+            backgroundImage.setImageDrawable(ContextCompat.getDrawable(context, id))
+        } catch (e: Exception){
+            e.printStackTrace()
+        }
+    }
+
+    fun setSrc(drawable: Drawable){
+        try {
+            backgroundImage.setImageDrawable(drawable)
+        } catch (e: Exception){
+            e.printStackTrace()
+        }
+    }
+
 
     fun setType(type: TYPE) {
         when (type) {
