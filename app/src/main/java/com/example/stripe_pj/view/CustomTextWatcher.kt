@@ -5,7 +5,7 @@ import android.text.TextWatcher
 
 interface CustomTextWatcher : TextWatcher {
 
-    override fun afterTextChanged(s: Editable?) {
+    override fun afterTextChanged(s: Editable) {
 
     }
 
@@ -16,9 +16,9 @@ interface CustomTextWatcher : TextWatcher {
     override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
         val sb = StringBuilder(s.length)
         sb.append(s)
-        textChanged(sb.toString())
+        textChanged(sb.toString(), start, before)
     }
 
-    fun textChanged(text: String)
+    fun textChanged(text: String, start: Int, before: Int)
 
 }

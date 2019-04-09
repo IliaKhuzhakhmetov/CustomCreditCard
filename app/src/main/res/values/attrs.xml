@@ -10,6 +10,20 @@
             <enum name="DISCOVER" value="5" />
             <enum name="JCB" value="6" />
         </attr>
+        <attr name="month">
+            <enum name="DECEMBER" value="0" />
+            <enum name="JANUARY" value="1" />
+            <enum name="FEBRUARY" value="2" />
+            <enum name="MARCH" value="3" />
+            <enum name="APRIL" value="4" />
+            <enum name="MAY" value="5" />
+            <enum name="JUNE" value="6" />
+            <enum name="JULY" value="7" />
+            <enum name="AUGUST" value="8" />
+            <enum name="SEPTEMBER" value="9" />
+            <enum name="OCTOBER" value="10" />
+            <enum name="NOVEMBER" value="11" />
+        </attr>
     </declare-styleable>
 
 </resources>

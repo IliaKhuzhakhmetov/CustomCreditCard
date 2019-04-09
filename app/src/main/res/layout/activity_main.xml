@@ -5,7 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:background="#fff">
 
     <com.example.stripe_pj.view.CustomCreditCard
             android:id="@+id/card"
@@ -14,27 +15,92 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:cardType="VISA"
+            app:month="JUNE"
             app:layout_constraintStart_toStartOf="parent"/>
 
-    <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/cardNumber"
-            android:layout_width="0dp"
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/cardNumberHint"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/card"/>
+            android:layout_marginStart="@dimen/margin_view"
+            app:layout_constraintTop_toBottomOf="@+id/card"
+            android:text="Credit card number"
+            android:fontFamily="@font/saira_regular"
+            android:textColor="#0277BD"/>
 
-    <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/cvv"
+    <androidx.cardview.widget.CardView
+            android:id="@+id/creditCardContainer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/cardNumber"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/cardNumber"/>
-    
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardNumberHint"
+            android:layout_marginStart="@dimen/margin_view"
+            android:layout_marginEnd="@dimen/margin_view"
+            android:layout_marginTop="@dimen/cardMarginTop"
+            app:contentPaddingLeft="@dimen/cardStartEndPadding"
+            app:contentPaddingRight="@dimen/cardStartEndPadding"
+            app:contentPaddingTop="@dimen/cardTopBottom"
+            app:contentPaddingBottom="@dimen/cardTopBottom"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="2dp">
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/cardNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/number_card_t_size"
+                android:fontFamily="@font/saira_regular"
+                android:background="@android:color/transparent"
+                android:maxLength="19"
+                android:maxLines="1"
+                android:inputType="number"
+                android:hint="@string/card_number_def"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/cvvHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/margin_view"
+            android:layout_marginTop="@dimen/margin_view"
+            app:layout_constraintTop_toBottomOf="@+id/creditCardContainer"
+            android:text="cvc"
+            android:fontFamily="@font/saira_regular"
+            android:textColor="@color/blueNameOfCard"/>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cvvContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvvHint"
+            android:layout_marginStart="@dimen/margin_view"
+            android:layout_marginEnd="@dimen/margin_view"
+            android:layout_marginTop="@dimen/cardMarginTop"
+            app:contentPaddingLeft="@dimen/cardStartEndPadding"
+            app:contentPaddingRight="@dimen/cardStartEndPadding"
+            app:contentPaddingTop="@dimen/cardTopBottom"
+            app:contentPaddingBottom="@dimen/cardTopBottom"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="2dp">
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/cvv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/number_card_t_size"
+                android:fontFamily="@font/saira_regular"
+                android:background="@android:color/transparent"
+                android:maxLength="4"
+                android:maxLines="1"
+                android:inputType="number"
+                android:hint="1234"/>
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,4 +6,8 @@
     <dimen name="margin_view">16dp</dimen>
     <dimen name="credit_card_top">60dp</dimen>
     <dimen name="number_card_t_size">22sp</dimen>
+    <dimen name="cardPadding">4dp</dimen>
+    <dimen name="cardStartEndPadding">16dp</dimen>
+    <dimen name="cardTopBottom">8dp</dimen>
+    <dimen name="cardMarginTop">8dp</dimen>
 </resources>

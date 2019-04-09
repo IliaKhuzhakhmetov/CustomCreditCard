@@ -18,3 +18,13 @@ fun String.toMask(mask: String): String {
         .replace("]", "")
         .replace(", ", "")
 }
+
+fun String.removeAll(elements: String)  = this
+    .toCharArray()
+    .filter { !elements.contains(it.toString()) }
+    .joinToString(separator = "", transform = { it.toString()})
+
+fun String.removeAll(vararg elements: String)  = this
+    .toCharArray()
+    .filter { !elements.contains(it.toString()) }
+    .joinToString(separator = "", transform = { it.toString()})
