@@ -1,6 +1,21 @@
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+
+publish {
+    def groupProjectID = 'com.example.creditcardlibrary'
+    def artifactProjectID = 'cardview'
+    def publishVersionID = '0.0.1'
+
+    userOrg = 'iliakhuzhakhmetov'
+    repoName = 'CreditCardView'
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = 'A library will help you add credit card view to your project. The credit card itself has flexible settings from changing the background to changing the card data!'
+    website = 'https://github.com/IliaKhuzhakhmetov/CustomCreditCard'
+}
 
 android {
     compileSdkVersion 28
