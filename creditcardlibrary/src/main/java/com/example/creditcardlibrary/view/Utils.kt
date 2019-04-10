@@ -1,4 +1,4 @@
-package com.example.stripe_pj.view
+package com.example.creditcardlibrary.view
 
 fun String.toMask(mask: String): String {
     val arr = ArrayList<Char>()
@@ -19,12 +19,20 @@ fun String.toMask(mask: String): String {
         .replace(", ", "")
 }
 
-fun String.removeAll(elements: String)  = this
-    .toCharArray()
-    .filter { !elements.contains(it.toString()) }
-    .joinToString(separator = "", transform = { it.toString()})
+fun String.isNumber(): Boolean {
+    if ( this.isEmpty()) return false
+    for (i in 0 until length)
+        if (!Character.isDigit(this[i]) && this[i] != ' ') return false
 
-fun String.removeAll(vararg elements: String)  = this
+    return true
+}
+
+fun String.removeAll(elements: String) = this
     .toCharArray()
     .filter { !elements.contains(it.toString()) }
-    .joinToString(separator = "", transform = { it.toString()})
+    .joinToString(separator = "", transform = { it.toString() })
+
+fun String.removeAll(vararg elements: String) = this
+    .toCharArray()
+    .filter { !elements.contains(it.toString()) }
+    .joinToString(separator = "", transform = { it.toString() })

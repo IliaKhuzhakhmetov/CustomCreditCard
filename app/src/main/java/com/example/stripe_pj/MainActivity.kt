@@ -2,9 +2,8 @@ package com.example.stripe_pj
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.stripe_pj.view.TYPE
+import com.example.creditcardlibrary.view.TYPE
 import kotlinx.android.synthetic.main.activity_main.*
-
 
 class MainActivity : AppCompatActivity() {
 

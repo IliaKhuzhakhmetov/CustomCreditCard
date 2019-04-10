@@ -1,4 +1,4 @@
-package com.example.stripe_pj.view
+package com.example.creditcardlibrary.view
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -9,7 +9,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
-import com.example.stripe_pj.R
+import com.example.creditcardlibrary.R
 
 class CustomCreditCard : LinearLayout {
 
@@ -130,7 +130,7 @@ class CustomCreditCard : LinearLayout {
     }
 
     fun setCreditNumber(value: String) {
-        if (value.matches(Regex("[a-z, A-Z]"))){
+        if (value.isNumber()){
             number = value.toMask(cardMask)
             cardNumber.text = value
         } else throw Exception("Номер содержит букавы")

@@ -1,4 +1,4 @@
-package com.example.stripe_pj.view
+package com.example.creditcardlibrary.view
 
 import android.text.Editable
 import android.text.TextWatcher
