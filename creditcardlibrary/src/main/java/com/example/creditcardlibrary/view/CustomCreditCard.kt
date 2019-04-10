@@ -19,7 +19,7 @@ class CustomCreditCard : LinearLayout {
     var mMONTH = MONTH.JANUARY
     var backgroundSrc = ContextCompat.getDrawable(context, R.drawable.cbimage)
     var mYear = 2020
-    var number = "4242 4242 4242 4242"
+    var number = context.resources.getString(R.string.card_number_def)
 
     private lateinit var logo: AppCompatImageView
     private lateinit var gradient: AppCompatImageView
