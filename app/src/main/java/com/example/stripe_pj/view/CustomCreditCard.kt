@@ -18,12 +18,15 @@ class CustomCreditCard : LinearLayout {
     var mTYPE = TYPE.VISA
     var mMONTH = MONTH.JANUARY
     var backgroundSrc = ContextCompat.getDrawable(context, R.drawable.cbimage)
+    var mYear = 2020
+    var number = "4242 4242 4242 4242"
 
     private lateinit var logo: AppCompatImageView
     private lateinit var gradient: AppCompatImageView
     private lateinit var cardNumber: AppCompatTextView
     private lateinit var cvvNumber: AppCompatTextView
     private lateinit var month: AppCompatTextView
+    private lateinit var year: AppCompatTextView
     private lateinit var backgroundImage: AppCompatImageView
 
     private val cardMask = "____ ____ ____ ____"
@@ -57,10 +60,12 @@ class CustomCreditCard : LinearLayout {
         cvvNumber = findViewById(R.id.cvv_label)
         month = findViewById(R.id.expirationMLabel)
         backgroundImage = findViewById(R.id.background)
+        year = findViewById(R.id.expiration_y_label)
 
         setType(mTYPE)
         setMonth(mMONTH)
         setSrc(backgroundSrc!!)
+        setYear(mYear)
     }
 
     fun addWatchers(number: EditText? = null, cvv: EditText? = null) {
@@ -92,29 +97,44 @@ class CustomCreditCard : LinearLayout {
             mTYPE = TYPE.fromId(a.getInt(R.styleable.CustomCreditCard_cardType, 0))
             mMONTH = MONTH.fromId(a.getInt(R.styleable.CustomCreditCard_month, 0))
             backgroundSrc = a.getDrawable(R.styleable.CustomCreditCard_scrBackground)
+            val tmpYear = a.getInteger(R.styleable.CustomCreditCard_year, 2020)
+            mYear = if (tmpYear in 2000..3000) tmpYear else 2020
         } finally {
             a.recycle()
         }
     }
 
-    fun setSrc(id: Int){
+    fun setYear(value: Int) {
+        if (value in 2000..3000) {
+            mYear = value
+            year.text = value.toString()
+        } else throw java.lang.Exception("Год должен быть в диапазоне 2000..3000")
+    }
+
+    fun setSrc(id: Int) {
         try {
             backgroundSrc = ContextCompat.getDrawable(context, id)
             backgroundImage.setImageDrawable(ContextCompat.getDrawable(context, id))
-        } catch (e: Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
 
-    fun setSrc(drawable: Drawable){
+    fun setSrc(drawable: Drawable) {
         try {
             backgroundSrc = drawable
             backgroundImage.setImageDrawable(drawable)
-        } catch (e: Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
 
+    fun setCreditNumber(value: String) {
+        if (value.matches(Regex("[a-z, A-Z]"))){
+            number = value.toMask(cardMask)
+            cardNumber.text = value
+        } else throw Exception("Номер содержит букавы")
+    }
 
     fun setType(type: TYPE) {
         mTYPE = type
@@ -154,7 +174,7 @@ class CustomCreditCard : LinearLayout {
         }
     }
 
-    fun setMonth(m: MONTH){
+    fun setMonth(m: MONTH) {
         mMONTH = m
         month.text = m.value
     }

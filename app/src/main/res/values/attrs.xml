@@ -24,8 +24,8 @@
             <enum name="OCTOBER" value="10" />
             <enum name="NOVEMBER" value="11" />
         </attr>
-        <attr name="scrBackground" format="reference">
-        </attr>
+        <attr name="scrBackground" format="reference"/>
+        <attr name="year" format="integer"/>
     </declare-styleable>
 
 </resources>

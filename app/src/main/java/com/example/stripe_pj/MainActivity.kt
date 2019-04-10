@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         card.addWatchers(number = cardNumber, cvv = cvv)
+        card.setYear(2021)
+        card.setCreditNumber("1234 1234 1234 3457")
 
         card.setOnClickListener {
             if (++cursor < cards.size) card.setType(cards[cursor]) else {
