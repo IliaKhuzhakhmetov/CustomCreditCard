@@ -25,12 +25,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val customCreditCard = CustomCreditCard(this)
-
         card.addWatchers(number = cardNumber, cvv = cvv)
         card.setYear(2021)
         card.setCreditNumber("1234 1234 1234 3457")
         card.setMonth(MONTH.JANUARY)
+        card.setType(TYPE.UNKNOWN)
         card.setSrc(R.drawable.visa_gradient)
 
         card.setOnClickListener {

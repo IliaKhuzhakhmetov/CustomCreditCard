@@ -105,6 +105,10 @@ class CustomCreditCard : LinearLayout {
         }
     }
 
+    /**
+     * This method will allow you to set the year of the card in the range from 2000 to 3000
+     * @param value year in Int value
+     */
     fun setYear(value: Int) {
         if (value in 2000..3000) {
             mYear = value
@@ -112,6 +116,10 @@ class CustomCreditCard : LinearLayout {
         } else throw java.lang.Exception("Год должен быть в диапазоне 2000..3000")
     }
 
+    /**
+     * The method will allow you to change the background of the card.
+     * @id resId (drawable only)
+     */
     fun setSrc(id: Int) {
         try {
             backgroundSrc = ContextCompat.getDrawable(context, id)
