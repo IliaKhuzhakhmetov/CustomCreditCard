@@ -1,7 +1,7 @@
 # CustomCreditCard
 View credit card for your projects. Supports the standard types of cards of the worlds spread banks.
 <p align="center">
-  <img src="https://i.ibb.co/gJnGvMS/image.png" width="350" title="CustomCreditCard">
+  <img src="https://i.ibb.co/ZST7Kqw/Honeycam-2019-04-15-12-53-02.gif" width="350" title="CustomCreditCard">
 </p>
 <br>
 What can the library <br>
