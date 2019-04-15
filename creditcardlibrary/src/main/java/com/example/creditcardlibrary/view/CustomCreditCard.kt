@@ -109,84 +109,106 @@ class CustomCreditCard : LinearLayout {
      * This method will allow you to set the year of the card in the range from 2000 to 3000
      * @param value year in Int value
      */
-    fun setYear(value: Int) {
-        if (value in 2000..3000) {
-            mYear = value
-            year.text = value.toString()
-        } else throw java.lang.Exception("Год должен быть в диапазоне 2000..3000")
-    }
+    fun setYear(value: Int): CustomCreditCard =
+        apply {
+            if (value in 2000..3000) {
+                mYear = value
+                year.text = value.toString()
+            } else throw java.lang.Exception("Год должен быть в диапазоне 2000..3000")
+        }
+
 
     /**
      * The method will allow you to change the background of the card.
-     * @id resId (drawable only)
+     * @param id resId (drawable only)
      */
-    fun setSrc(id: Int) {
-        try {
-            backgroundSrc = ContextCompat.getDrawable(context, id)
-            backgroundImage.setImageDrawable(ContextCompat.getDrawable(context, id))
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    fun setSrc(drawable: Drawable) {
-        try {
-            backgroundSrc = drawable
-            backgroundImage.setImageDrawable(drawable)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    fun setCreditNumber(value: String) {
-        if (value.isNumber()) {
-            number = value.toMask(cardMask)
-            cardNumber.text = value
-        } else throw Exception("Номер содержит букавы")
-    }
-
-    fun setType(type: TYPE) {
-        mTYPE = type
-        when (type) {
-            TYPE.VISA -> {
-                logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.visa_logo))
-                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.visa_gradient))
-            }
-            TYPE.MASTERCARD -> {
-                logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.mastercard_logo))
-                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.mastercard_gradient))
-            }
-            TYPE.UNIONPAY -> {
-                logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.unionpay_logo))
-                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.unionpay_gradient))
-            }
-            TYPE.DINERS_CLUB -> {
-                logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.diners_club_logo))
-                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.diner_club_gradient))
-            }
-            TYPE.AMERICAN_EXPRESS -> {
-                logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.amex_logo))
-                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.amex_gradient))
-            }
-            TYPE.DISCOVER -> {
-                logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.discover_logo))
-                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.discover_gradient))
-            }
-            TYPE.JCB -> {
-                logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.jcb_logo))
-                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.jcb_gradient))
-            }
-            else -> {
-                logo.setImageDrawable(null)
-                gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.diner_club_gradient))
+    fun setSrc(id: Int): CustomCreditCard =
+        apply {
+            try {
+                backgroundSrc = ContextCompat.getDrawable(context, id)
+                backgroundImage.setImageDrawable(ContextCompat.getDrawable(context, id))
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
-    }
 
-    fun setMonth(m: MONTH) {
-        mMONTH = m
-        month.text = m.value
-    }
+
+    /**
+     * The method will allow you to change the background of the card.
+     * @param drawable
+     */
+    fun setSrc(drawable: Drawable): CustomCreditCard =
+        apply {
+            try {
+                backgroundSrc = drawable
+                backgroundImage.setImageDrawable(drawable)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+
+
+    /**
+     * The method will allow you to set the card number
+     * @param value string like this "1234 1234 1234 1234" <br>
+     *     without chars
+     */
+    fun setCreditNumber(value: String): CustomCreditCard =
+        apply {
+            if (value.isNumber()) {
+                number = value.toMask(cardMask)
+                cardNumber.text = value
+            } else throw Exception("Номер содержит букавы")
+        }
+
+    /**
+     * The method will allow you to set the type of card (visa, master card, etc.)
+     * @param type example TYPE.VISA
+     */
+    fun setType(type: TYPE): CustomCreditCard =
+        apply {
+            mTYPE = type
+            when (type) {
+                TYPE.VISA -> {
+                    logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.visa_logo))
+                    gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.visa_gradient))
+                }
+                TYPE.MASTERCARD -> {
+                    logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.mastercard_logo))
+                    gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.mastercard_gradient))
+                }
+                TYPE.UNIONPAY -> {
+                    logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.unionpay_logo))
+                    gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.unionpay_gradient))
+                }
+                TYPE.DINERS_CLUB -> {
+                    logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.diners_club_logo))
+                    gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.diner_club_gradient))
+                }
+                TYPE.AMERICAN_EXPRESS -> {
+                    logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.amex_logo))
+                    gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.amex_gradient))
+                }
+                TYPE.DISCOVER -> {
+                    logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.discover_logo))
+                    gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.discover_gradient))
+                }
+                TYPE.JCB -> {
+                    logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.jcb_logo))
+                    gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.jcb_gradient))
+                }
+                else -> {
+                    logo.setImageDrawable(null)
+                    gradient.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.diner_club_gradient))
+                }
+            }
+        }
+
+    fun setMonth(m: MONTH): CustomCreditCard =
+        apply {
+            this.mMONTH = m
+            month.text = m.value
+        }
 }
 
 enum class MONTH(var value: String) {
