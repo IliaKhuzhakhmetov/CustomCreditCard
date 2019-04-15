@@ -52,15 +52,16 @@ class CustomCreditCard : LinearLayout {
     }
 
     private fun init(context: Context) {
+
         rootView = View.inflate(context, R.layout.view_card, this)
 
-        logo = findViewById(R.id.logo)
+        logo = findViewById(R.id.creditcard_logo)
         gradient = findViewById(R.id.gradient)
-        cardNumber = findViewById(R.id.card_number_label)
-        cvvNumber = findViewById(R.id.cvv_label)
-        month = findViewById(R.id.expirationMLabel)
+        cardNumber = findViewById(R.id.creditcard_card_number_label)
+        cvvNumber = findViewById(R.id.creditcard_cvv_label)
+        month = findViewById(R.id.creditcard_expirationMLabel)
         backgroundImage = findViewById(R.id.background)
-        year = findViewById(R.id.expiration_y_label)
+        year = findViewById(R.id.creditcard_expiration_y_label)
 
         setType(mTYPE)
         setMonth(mMONTH)
@@ -130,7 +131,7 @@ class CustomCreditCard : LinearLayout {
     }
 
     fun setCreditNumber(value: String) {
-        if (value.isNumber()){
+        if (value.isNumber()) {
             number = value.toMask(cardMask)
             cardNumber.text = value
         } else throw Exception("Номер содержит букавы")

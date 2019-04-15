@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/root"
+        android:id="@+id/creditcard_root"
         android:layout_width="match_parent"
         app:layout_constraintWidth_min="320dp"
         android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
                     android:src="@drawable/cbimage"/>
             <!--logo-->
             <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/logo"
+                    android:id="@+id/creditcard_logo"
                     android:layout_width="120dp"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
@@ -82,7 +82,7 @@
                     />
 
             <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/card_number_label"
+                    android:id="@+id/creditcard_card_number_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/saira_medium"
@@ -104,11 +104,11 @@
                     android:textColor="@color/white"
                     android:layout_marginTop="@dimen/margin_view"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/card_number_label"
+                    app:layout_constraintTop_toBottomOf="@+id/creditcard_card_number_label"
                     />
 
             <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/expirationMLabel"
+                    android:id="@+id/creditcard_expirationMLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/saira_medium"
@@ -120,14 +120,14 @@
                     />
 
             <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/expiration_y_label"
+                    android:id="@+id/creditcard_expiration_y_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/saira_medium"
                     android:text="@string/year_def"
                     android:textColor="@color/white"
                     android:textSize="@dimen/number_card_t_size"
-                    app:layout_constraintStart_toEndOf="@id/expirationMLabel"
+                    app:layout_constraintStart_toEndOf="@id/creditcard_expirationMLabel"
                     android:layout_marginStart="@dimen/margin_view"
                     app:layout_constraintTop_toBottomOf="@+id/expiration_hint"
                     />
@@ -143,11 +143,11 @@
                     android:layout_marginTop="@dimen/margin_view"
                     android:maxLength="4"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/card_number_label"
+                    app:layout_constraintTop_toBottomOf="@+id/creditcard_card_number_label"
                     />
 
             <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/cvv_label"
+                    android:id="@+id/creditcard_cvv_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/saira_medium"
