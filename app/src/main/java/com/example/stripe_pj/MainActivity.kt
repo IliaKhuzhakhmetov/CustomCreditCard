@@ -1,6 +1,7 @@
 package com.example.stripe_pj
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.creditcardlibrary.view.MONTH
 import com.example.creditcardlibrary.view.TYPE
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         card.addWatchers(number = cardNumber, cvv = cvv)
-        card.setCreditNumber("2121")
+        val cardS = card.setCreditNumber("2121")
             .setYear(2039)
             .setType(TYPE.VISA)
             .setSrc(R.drawable.cbimage)

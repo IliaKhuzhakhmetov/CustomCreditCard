@@ -8,7 +8,7 @@ apply plugin: 'kotlin-android'
 publish {
     def groupProjectID = 'com.example.creditcardlibrary'
     def artifactProjectID = 'cardview'
-    def publishVersionID = '0.0.15'
+    def publishVersionID = '0.0.14'
 
     userOrg = 'iliakhuzhakhmetov'
     repoName = 'CreditCardView'
@@ -51,9 +51,21 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
 }
 
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+    //options.encoding = 'UTF-8'
+}
 artifacts {
+    archives javadocJar
     archives sourcesJar
 }
+
 
 repositories {
     mavenCentral()

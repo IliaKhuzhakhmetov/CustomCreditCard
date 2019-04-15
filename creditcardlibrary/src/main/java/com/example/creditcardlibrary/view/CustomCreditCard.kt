@@ -11,17 +11,28 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import com.example.creditcardlibrary.R
 
+/**
+ *  It's view help you integrate in your app unical credit card view
+ *  @author IliaKhuzhakhmetov
+ *  @property mTYPE Visa, MasterCard and etc.
+ *  @property mMONTH expiration month January, February and etc.
+ *  @property backgroundSrc Background under gradient
+ *  @property mYear expiration Year
+ *  @property number credit card number ("1234 1234 1234 1234")
+ *
+ *  In next time this card will be automatically set the Type of card when we set the number
+ */
 class CustomCreditCard : LinearLayout {
 
     internal lateinit var rootView: View
 
-    var mTYPE = TYPE.VISA
+    var mTYPE = TYPE.VISA //
     var mMONTH = MONTH.JANUARY
     var backgroundSrc = ContextCompat.getDrawable(context, R.drawable.cbimage)
     var mYear = 2020
     var number = context.resources.getString(R.string.card_number_def)
 
-    private lateinit var logo: AppCompatImageView
+    private lateinit var logo: AppCompatImageView           // Card logo (Visa, Mastercard)
     private lateinit var gradient: AppCompatImageView
     private lateinit var cardNumber: AppCompatTextView
     private lateinit var cvvNumber: AppCompatTextView
@@ -150,7 +161,7 @@ class CustomCreditCard : LinearLayout {
 
     /**
      * The method will allow you to set the card number
-     * @param value string like this "1234 1234 1234 1234" <br>
+     * @param value string like this "1234 1234 1234 1234"
      *     without chars
      */
     fun setCreditNumber(value: String): CustomCreditCard =
