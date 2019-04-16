@@ -11,20 +11,12 @@ What can the library <br>
 - The client can get all the values of the card<br>
 
 <h1>Setup</h1>
-In the module of your application, you must write a few lines. In build.gradle of app module
 
-```
-repositories { 
-    maven {
-        url  "https://dl.bintray.com/iliakhuzhakhmetov/CreditCardView"
-    }
-}
-```
-and in dependecies:
+In dependecies:
 ```
 dependencies {
    ***
-    implementation 'com.example.creditcardlibrary:cardview:0.0.14'
+    implementation 'com.example.creditcardlibrary:cardview:0.0.15'
    ***
 }
 ```
