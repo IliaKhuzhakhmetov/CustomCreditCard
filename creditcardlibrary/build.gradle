@@ -3,12 +3,10 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
-
-
 publish {
     def groupProjectID = 'com.example.creditcardlibrary'
     def artifactProjectID = 'cardview'
-    def publishVersionID = '0.0.14'
+    def publishVersionID = '0.0.15'
 
     userOrg = 'iliakhuzhakhmetov'
     repoName = 'CreditCardView'
