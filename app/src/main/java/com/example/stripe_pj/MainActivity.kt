@@ -1,9 +1,7 @@
 package com.example.stripe_pj
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.creditcardlibrary.view.MONTH
 import com.example.creditcardlibrary.view.TYPE
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -26,17 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         card.addWatchers(number = cardNumber, cvv = cvv)
-        val cardS = card.setCreditNumber("2121")
-            .setYear(2039)
-            .setType(TYPE.VISA)
-            .setSrc(R.drawable.cbimage)
-            .setMonth(MONTH.JUNE)
-
-        card.apply {
-            setYear(2039)
-            setMonth(MONTH.JANUARY)
-            setCreditNumber("1234 1234 1234 1234")
-        }
+        card.setCreditNumber("3052 5777 6889 38")
 
         card.setOnClickListener {
             if (++cursor < cards.size) card.setType(cards[cursor]) else {

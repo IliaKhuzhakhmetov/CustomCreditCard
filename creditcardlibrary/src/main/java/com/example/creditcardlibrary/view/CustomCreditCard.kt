@@ -3,6 +3,7 @@ package com.example.creditcardlibrary.view
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -25,12 +26,25 @@ import com.example.creditcardlibrary.R
 class CustomCreditCard : LinearLayout {
 
     internal lateinit var rootView: View
+    val TAG = CustomCreditCard::class.java.simpleName
 
     var mTYPE = TYPE.VISA //
     var mMONTH = MONTH.JANUARY
     var backgroundSrc = ContextCompat.getDrawable(context, R.drawable.cbimage)
     var mYear = 2020
     var number = context.resources.getString(R.string.card_number_def)
+
+    //region regex
+    private val amex_regex = Regex("^3[47][0-9]{13}\$")
+    private val dinnersclub_regex = Regex("^3(?:0[0-5]|[68][0-9])[0-9]{11,13}\$")
+    private val visa_regex = Regex("^4[0-9]{12}(?:[0-9]{3})?\$")
+    private val mastercard_regex =
+        Regex("^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))\$")
+    private val unionpay_regex = Regex("^(62[0-9]{14,17})\$")
+    private val discover_regex =
+        Regex("^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})\$")
+    private val jcb_regex = Regex("^(?:2131|1800|35\\d{3})\\d{11}\$")
+    //endregion
 
     private lateinit var logo: AppCompatImageView           // Card logo (Visa, Mastercard)
     private lateinit var gradient: AppCompatImageView
@@ -85,7 +99,7 @@ class CustomCreditCard : LinearLayout {
             object : CustomTextWatcher {
                 override fun textChanged(text: String, start: Int, before: Int) {
                     val out = text.toMask(cardMask)
-                    cardNumber.text = out
+                    setCreditNumber(out)
                 }
             }
         )
@@ -161,15 +175,51 @@ class CustomCreditCard : LinearLayout {
 
     /**
      * The method will allow you to set the card number
+     * Now this method also automatically supports the definition of card types.
      * @param value string like this "1234 1234 1234 1234"
      *     without chars
      */
     fun setCreditNumber(value: String): CustomCreditCard =
         apply {
-            if (value.isNumber()) {
+            if (value.isNumber() || value.isEmpty()) {
                 number = value.toMask(cardMask)
                 cardNumber.text = value
-            } else throw Exception("Номер содержит букавы")
+                val num = number.replace(" ", "")
+                when {
+
+                    amex_regex.containsMatchIn(num) -> {
+                        setType(TYPE.AMERICAN_EXPRESS)
+                        Log.d(TAG, "AMEX setup!")
+                    }
+                    dinnersclub_regex.containsMatchIn(num) -> {
+                        setType(TYPE.DINERS_CLUB)
+                        Log.d(TAG, "Diners club setup!")
+                    }
+                    visa_regex.containsMatchIn(num) -> {
+                        setType(TYPE.VISA)
+                        Log.d(TAG, "Visa setup!")
+                    }
+                    mastercard_regex.containsMatchIn(num) -> {
+                        setType(TYPE.MASTERCARD)
+                        Log.d(TAG, "Mastercard setup!")
+                    }
+                    discover_regex.containsMatchIn(num) -> {
+                        setType(TYPE.DISCOVER)
+                        Log.d(TAG, "Discover setup!")
+                    }
+                    unionpay_regex.containsMatchIn(num) -> {
+                        setType(TYPE.UNIONPAY)
+                        Log.d(TAG, "Unionpay setup!")
+                    }
+                    jcb_regex.containsMatchIn(num) -> {
+                        setType(TYPE.JCB)
+                        Log.d(TAG, "JCB setup")
+                    }
+
+                    else -> setType(TYPE.UNKNOWN)
+
+                }
+            } else throw Exception("Number contains chars")
         }
 
     /**
