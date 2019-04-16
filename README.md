@@ -24,7 +24,7 @@ and in dependecies:
 ```
 dependencies {
    ***
-    implementation 'com.example.creditcardlibrary:cardview:0.0.13'
+    implementation 'com.example.creditcardlibrary:cardview:0.0.14'
    ***
 }
 ```
@@ -57,6 +57,20 @@ card.setYear(2021)
 card.setCreditNumber("1234 1234 1234 3457")
 card.setMonth(MONTH.JANUARY)
 card.setSrc(R.drawable.visa_gradient)
+
+or like this
+card.setCreditNumber("2121")
+            .setYear(2039)
+            .setType(TYPE.VISA)
+            .setSrc(R.drawable.cbimage)
+            .setMonth(MONTH.JUNE)
+            
+or like this
+card.apply { 
+            setYear(2039)
+            setMonth(MONTH.JANUARY)
+            setCreditNumber("1234 1234 1234 1234")
+        }
 ```
 
 In order to bind field changes to edith text, you need to add them to the card by the method:
