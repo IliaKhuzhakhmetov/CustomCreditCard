@@ -32,6 +32,12 @@ class MainActivity : AppCompatActivity() {
             .setSrc(R.drawable.cbimage)
             .setMonth(MONTH.JUNE)
 
+        card.apply {
+            setYear(2039)
+            setMonth(MONTH.JANUARY)
+            setCreditNumber("1234 1234 1234 1234")
+        }
+
         card.setOnClickListener {
             if (++cursor < cards.size) card.setType(cards[cursor]) else {
                 cursor = 0
